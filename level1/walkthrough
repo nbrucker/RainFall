@@ -1,0 +1,10 @@
+les étapes afin de réussir : Comprendre le binaire donné
+- On lance gdb avec level1
+- info function
+- On prends l'adresse de run
+- execute la commande de script avec l'adresse de run
+- On execute la deuxieme commande
+- on se trouve dans un shell
+  - whoami -> level2
+- il nous suffit de voir le mot de passe dans le home de level2
+  - puis on execute la derniere commande

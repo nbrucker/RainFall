@@ -1,0 +1,35 @@
+les étapes afin de réussir : Comprendre le binaire donné
+
+- Ouverture du main par gdb
+  - test du programme
+    (nil) (nil)
+
+    on s'apperçoit qu'on doit taper des instructions
+Recherche de mot clef ou chiffre avec objdump -s sur level8
+
+on trouve dans la section .rodata une suite de strings
+  `%p, %p, auth, reset, service, login, /bin/sh, Password`
+
+on tente des choses :
+  auth xxxxx avec cette commande le premier (nil) devient `0x804a008`
+  service cette commande nous change le deuxieme (nil)
+
+level8@RainFall:~$ ./level8
+(nil), (nil)
+service
+(nil), 0x804a008 <--
+service
+(nil), 0x804a018 <--
+service
+(nil), 0x804a028 <--
+
+revenons au disas du main
+  nous voyons qu'avant l'appel à système nous avons 0x20 de différence soit 32
+  `0x080486e7 <+387>:	mov    0x20(%eax),%eax`
+
+Hypothèse il nous faut 0x20 de différence entre les deux
+
+0x804a008, 0x804a028 est la combinaison avec 32 de différence
+
+Nous faisons login en suite et nous voilà connecté au terminal
+Nous faisons la command et nous avons le mdp

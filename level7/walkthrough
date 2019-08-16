@@ -1,0 +1,50 @@
+les étapes afin de réussir : Comprendre le binaire donné
+disas main
+  [...]
+  0x080485a0 <+127>:	call   0x80483e0 <strcpy@plt> <--- strcpy
+0x080485a5 <+132>:	mov    0xc(%ebp),%eax
+0x080485a8 <+135>:	add    $0x8,%eax
+0x080485ab <+138>:	mov    (%eax),%eax
+0x080485ad <+140>:	mov    %eax,%edx
+0x080485af <+142>:	mov    0x18(%esp),%eax
+0x080485b3 <+146>:	mov    0x4(%eax),%eax
+0x080485b6 <+149>:	mov    %edx,0x4(%esp)
+0x080485ba <+153>:	mov    %eax,(%esp)
+0x080485bd <+156>:	call   0x80483e0 <strcpy@plt> <--- un deuxieme strcpy
+0x080485c2 <+161>:	mov    $0x80486e9,%edx
+0x080485c7 <+166>:	mov    $0x80486eb,%eax
+0x080485cc <+171>:	mov    %edx,0x4(%esp)
+0x080485d0 <+175>:	mov    %eax,(%esp)
+0x080485d3 <+178>:	call   0x8048430 <fopen@plt>  <--- open qui donne la solution
+0x080485d8 <+183>:	mov    %eax,0x8(%esp)
+0x080485dc <+187>:	movl   $0x44,0x4(%esp)
+0x080485e4 <+195>:	movl   $0x8049960,(%esp)   <--- la variable qui contient le mdp
+0x080485eb <+202>:	call   0x80483c0 <fgets@plt> <--- adresse à retenir
+0x080485f0 <+207>:	movl   $0x8048703,(%esp)
+0x080485f7 <+214>:	call   0x8048400 <puts@plt>
+0x080485fc <+219>:	mov    $0x0,%eax
+0x08048601 <+224>:	leave
+0x08048602 <+225>:	ret
+
+disas m
+0x080484f4 <+0>:	push   %ebp
+0x080484f5 <+1>:	mov    %esp,%ebp
+0x080484f7 <+3>:	sub    $0x18,%esp
+0x080484fa <+6>:	movl   $0x0,(%esp)
+0x08048501 <+13>:	call   0x80483d0 <time@plt>
+0x08048506 <+18>:	mov    $0x80486e0,%edx
+0x0804850b <+23>:	mov    %eax,0x8(%esp)
+0x0804850f <+27>:	movl   $0x8049960,0x4(%esp) <--- la variable qui contient la solution
+0x08048517 <+35>:	mov    %edx,(%esp)
+0x0804851a <+38>:	call   0x80483b0 <printf@plt> <--- printf de la solution
+0x0804851f <+43>:	leave
+0x08048520 <+44>:	ret
+
+   On va chercher à changer l'adresse de puts par celle de la fonction m
+
+   on récupère l'adresse de m avec gdb : x m : `0x80484f4`
+   disas 0x8048400
+   0x08048400 <+0>:	jmp    *0x8049928
+
+test de la taille du premier strcpy avec ltrace et on trouve 20
+ce qui nous donne notre exploit dans command

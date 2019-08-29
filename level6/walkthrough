@@ -9,4 +9,4 @@ ltrace nous donne toutes les infos nécessaires.
 Dans le premier malloc(64) est copié argv[1]
 Dans le second malloc(4) est stocké une adresse de fonction qui sera appelé par la suite
 
-Il suffit donc de se servir du strcpy pour overwrite l'adresse et y mettre celle de m
+Il suffit donc de se servir du strcpy pour overwrite l'adresse et y mettre celle de n

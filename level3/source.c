@@ -7,7 +7,7 @@ int main(int argc, char const **argv)
   return 0;
 }
 
-void v(void);
+void v(void)
 {
   int i;
   char buf[512];

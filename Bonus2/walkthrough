@@ -1,0 +1,13 @@
+disas main
+[...]
+0x0804859f <+118>:	movl   $0x8048738,(%esp)
+ 0x080485a6 <+125>:	call   0x8048380 <getenv@plt> /// il prends la langue donnée (en, fi, nl)
+ 0x080485ab <+130>:	mov    %eax,0x9c(%esp)
+ 0x080485b2 <+137>:	cmpl   $0x0,0x9c(%esp)
+ [...]
+
+ On voit qu'il n'y a aucun appel à un sh donc on met un shellcode dans l'environnement
+ On cherche son address avec notre getenv.c
+ ensuite on change la langue dans les variable d'env en fi
+ et on lance notre command 2 qui nous permet d'overflow le return et lancer notre shell
+ TADA

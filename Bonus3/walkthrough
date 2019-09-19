@@ -1,0 +1,22 @@
+disas main
+[...]
+   0x0804857f <+139>:	mov    (%eax),%eax
+   0x08048581 <+141>:	mov    %eax,(%esp)
+   0x08048584 <+144>:	call   0x8048430 <atoi@plt> // le paramettre est utilisé dans atoi
+   0x08048589 <+149>:	movb   $0x0,0x18(%esp,%eax,1)
+[...]
+   0x080485d3 <+223>:	lea    0x18(%esp),%eax
+   0x080485d7 <+227>:	mov    %eax,(%esp)
+   0x080485da <+230>:	call   0x80483b0 <strcmp@plt> // le parametre est aussi utilisé dans strcmp
+   0x080485df <+235>:	test   %eax,%eax
+[...]
+   0x080485f3 <+255>:	movl   $0x804870a,(%esp)
+   0x080485fa <+262>:	call   0x8048420 <execl@plt> // un sh
+   0x080485ff <+267>:	jmp    0x8048610 <main+284>
+   0x08048601 <+269>:	lea    0x18(%esp),%eax
+[...]
+
+
+on a donc envoyé une chaine vide et nous avons obtenu directement le shell
+./bonus3 ""
+fin de l'exercise

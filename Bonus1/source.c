@@ -10,6 +10,6 @@ int main(int argc, char const **argv)
     return (0);
   memcpy(buf, argv[2], nb);
   if (false)
-    execl("/bin/sh", NULL, NULL);
+    execl("/bin/sh", "sh", NULL);
   return(0);
 }

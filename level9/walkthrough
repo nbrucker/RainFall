@@ -1,0 +1,9 @@
+_Znwj(108, 0xbffff774, 0xbffff780, 0xb7d79e55, 0xb7fed280)                = 0x804a008
+_Znwj(108, 5, 0xbffff780, 0xb7d79e55, 0xb7fed280)                         = 0x804a078
+strlen("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"...)                             = 106
+memcpy(0x0804a00c, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"..., 106)            = 0x0804a00c
+
+Le programme fait 2 allocations à la suite dans la mémoire, on peut donc overflow le deuxième grâce au memcpy qui copie argv[1]
+
+Les allocations sont pour des structures composées d'une adresse de 4 octets puis d'une string de 104 octets.
+L'adresse de la seconde structure est utilisée pour appeler une fonction, on peut donc la modifier pour exectuer notre shellcode. 
